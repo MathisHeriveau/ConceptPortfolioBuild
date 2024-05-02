@@ -1,11 +1,11 @@
-# Rocket 3D model
-A fully visual three JS rocket model
-# A very thanks for
- - The rocket Model design from sketchfab
- - skybox from https;//humus.name/
-# Tech used
-- ThreeJS
-- Orbital controls(Three JS)
-- gLTF Loader(Three JS)
+# Portfolio Website
 
-`` Requires a speedy internet connection as it may take some time to load``
+Ce repository contient le code source de mon portfolio website, conçu pour mettre en valeur mes compétences et mes projets. Voici un aperçu des principales technologies utilisées :
+
+- **ThreeJS** : Une bibliothèque JavaScript permettant de créer et afficher des contenus 3D dans un navigateur web.
+  
+- **Orbital Controls (Three JS)** : Une fonctionnalité de contrôle qui permet à l'utilisateur de naviguer dans un environnement 3D en utilisant des mouvements orbitaux.
+
+- **gLTF Loader (Three JS)** : Un chargeur qui permet de charger et d'afficher des modèles 3D au format gLTF dans une scène ThreeJS.
+
+Ce portfolio a été conçu pour présenter mes compétences de manière interactive et visuelle, en mettant l'accent sur les projets que j'ai réalisés.

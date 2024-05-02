@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="img">
+                <img src="./img/logo.png" alt="logo">
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Portfolio</a></li>
+                <li><a href="index.html">A propos</a></li>
+                <li><a href="index.html">Blog</a></li>
+                <li><a href="index.html">Contact</a></li>
+                <li><a href="index.html">Témoignages</a></li>
+                <li><a href="index.html">FAQ</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <div id="container" style="height: 100vh; width: 100%;">
+    </div>
+
+
+    <main>
+        <div class="main__left">
+            <h5>Hériveau Mathis</h5>
+            <h3>Développeur Web</h3>
+            <h3>Intelligence</h3>
+            <h3>Artificielle</h3>
+            <p>L'intelligence artificielle, un univers où les possibilités sont infinies et la créativité sans borne.</p>
+            <button>
+                En savoir plus
+            </button>
+
+        </div>
+        <div class="speech-bubble">
+            <div class="developer">
+                <input type="radio" id="show-question" name="joke">
+                <input type="radio" id="show-answer" name="joke">
+                <div class="speech " id="speech">
+                    <p id="question">Déplace moi en utilisant les flèches ↑ ↓ ← → pour explorer mon portfolio.</p>
+                    <p id="answer">Sors de l'écran pour découvrir mon univers.</p>
+                </div>
+            </div>
+        </div>
+        <img id="grid" width="64" height="64" src="https://img.icons8.com/arcade/64/grid.png" alt="grid"/>
+
+
+        <div class="lumiere"></div>
+        <div class="animationSortie">
+            <div class="band"></div>
+            <div class="band"></div>
+            <div class="band"></div>
+            <div class="band"></div>
+            <div class="band"></div>
+            <div class="band"></div>
+            <div class="band"></div>
+            <div class="band"></div>
+            <div class="band"></div>
+            <div class="band"></div>
+        </div>
+
+    </main>
+
+
+
+</body>
+<script src="helperjs/three.min.js"></script>
+<script src="helperjs/orbitControls.js"></script>
+<script src="helperjs/gltfLoader.js"></script>
+
+<script src="characterControls.js"></script>
+<script src="main.js"></script>
+
+
+<script>
+
+    setTimeout(() => {
+        document.getElementById('show-question').checked = true;
+        setTimeout(() => {
+            document.getElementById('show-answer').checked = true;
+            setTimeout(() => {
+                document.getElementById('speech').style.display = 'none';
+            }, 6000);
+        }, 6000);
+    }, 4000);
+
+
+  
+
+    // Si une touche est appyée on display none la question
+    document.addEventListener('keydown', function (event) {
+        document.getElementById('speech').style.display = 'none';
+    });
+
+
+    function setBandStyle(band, style, color) {
+        band.style.backgroundColor = "#" + color;
+        band.classList.remove("primary", "secondary", "tertiary", "primaryOUT", "secondaryOUT", "tertiaryOUT");
+        band.classList.add(style);
+    }
+    
+    function setBandCookie(index, color) {
+        document.cookie = "band" + index + "=" + color + "; path=/";
+    }
+    
+    function getBandCookieValue(index) {
+        var cookie = document.cookie.split(';');
+        var cookieValue = "";
+        for (let j = 0; j < cookie.length; j++) {
+            if(cookie[j].includes("band" + index)){
+                cookieValue = cookie[j].split('=')[1];
+            }
+        }
+        return cookieValue;
+    }
+    
+    function goToPage(pageSuivante) {
+        document.querySelector('.animationSortie').style.zIndex = 1000;
+    
+        let bands = document.querySelectorAll('.band');
+        for (let i = 0; i < bands.length; i++) {
+            var color = ["DCBBB5", "D5A099", "DB726E"];
+            var style = ["primary", "secondary", "tertiary"];
+    
+            var randomColor = color[Math.floor(Math.random() * color.length)];
+            var randomStyle = style[Math.floor(Math.random() * style.length)];
+    
+            setBandStyle(bands[i], randomStyle, randomColor);
+            setBandCookie(i, randomColor);
+        }
+    
+        setTimeout(() => {
+            window.location.href = (pageSuivante) ? "portfolio.html#1" : "index.html#1";
+        }, 2500);
+    }
+    
+    function inThePage() {
+        document.querySelector('.animationSortie').style.zIndex = 1000;
+    
+        let bands = document.querySelectorAll('.band');
+        for (let i = 0; i < bands.length; i++) {
+            var style = ["primaryOUT", "secondaryOUT", "tertiaryOUT"];
+            var randomStyle = style[Math.floor(Math.random() * style.length)];
+            var cookieValue = getBandCookieValue(i);
+            
+            bands[i].style.backgroundColor = "#" + cookieValue;
+            setBandStyle(bands[i], randomStyle, "");
+        }
+    
+        setTimeout(() => {
+            document.querySelector('.animationSortie').style.zIndex = -10;
+        }, 2500);
+    }
+    
+
+   
+
+
+    
+</script>
+
+</html>

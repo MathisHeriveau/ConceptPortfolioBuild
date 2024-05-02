@@ -17,6 +17,7 @@ class CharacterControls {
         this.delta = 0;
         this.model.rotation.y = THREE.MathUtils.degToRad(this.currentAngle);
         this.timer = 0;
+        this.isOut = false;
         this.timerMax = Math.floor(Math.random() * (10 - 5 + 1)) + 4;
 
         setInterval(() => {
@@ -43,19 +44,19 @@ class CharacterControls {
             }
             switch (event.key) {
                 case 'ArrowUp':
-                    this.moveDirection.z = -1; 
+                    this.moveDirection.z = -0.5; 
                     this.touchePressed.up = true;
                     break;
                 case 'ArrowDown':
-                    this.moveDirection.z = 1; 
+                    this.moveDirection.z = 0.5; 
                     this.touchePressed.down = true;
                     break;
                 case 'ArrowLeft':
-                    this.moveDirection.x = -1; 
+                    this.moveDirection.x = -0.7; 
                     this.touchePressed.left = true;
                     break;
                 case 'ArrowRight':
-                    this.moveDirection.x = 1; 
+                    this.moveDirection.x = 0.7; 
                     this.touchePressed.right = true;
                     break;
             }
@@ -123,7 +124,7 @@ class CharacterControls {
             angleDiff = THREE.MathUtils.clamp(angleDiff, -180, 180);
     
             // Adjust rotationAmount based on angle difference
-            const rotationSpeed = 360;
+            const rotationSpeed = 600;
             let rotationAmount = rotationSpeed * delta;
     
             if (Math.abs(angleDiff) < rotationAmount) {
@@ -145,7 +146,13 @@ class CharacterControls {
         }
 
 
-        console.log(this.isOutOfWindow());
+        if(this.isOutOfWindow()){
+            if (!this.isOut) {
+                this.isOut = true;
+                let isRight = this.model.position.x > 0;
+                goToPage(isRight);
+            }
+        }
     }
     
     

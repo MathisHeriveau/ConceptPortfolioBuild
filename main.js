@@ -1,4 +1,4 @@
-let scene, camera, renderer, controls, model, hemiLight, spotLight;
+let scene, camera, renderer, controls, model, hemiLight, spotLight, gridHelper;
 let mixer = null;
 
 let grid, characterControls, hitBox;
@@ -57,13 +57,18 @@ function init() {
     // On ajoute un sol cadrillé
 
     /// On créé une vrai grille qui va nous servir de sol pour l'ombre
-    var planeGeometry = new THREE.PlaneGeometry(100, 100, 100, 100);
+    var planeGeometry = new THREE.PlaneGeometry(1000, 1000, 100, 100);
     var planeMaterial = new THREE.ShadowMaterial();
     planeMaterial.opacity = 0.5;
     var grid = new THREE.Mesh(planeGeometry, planeMaterial);
     grid.receiveShadow = true;
     grid.rotation.x = -Math.PI / 2;
     scene.add(grid);
+    // Ajout d'un helper pour voir la grille
+    gridHelper = new THREE.GridHelper(100, 100);
+    gridHelper.visible = false;
+    scene.add(gridHelper);
+    
 
     new THREE.GLTFLoader().load(`model/gir animer/Mon petit perso marche.glb`,  function ( gltf ){
         model = gltf.scene;
@@ -107,6 +112,8 @@ function init() {
     
         animate();
     });
+
+   
 
     document.addEventListener('mouseup', onDocumentMouseClick, false);
     document.addEventListener('mousemove', onDocumentMouseMove, false);
@@ -204,3 +211,19 @@ function addTextToScene (textAEcrire, position)  {
     });
 }
 
+
+
+document.getElementById('grid').addEventListener('click', () => {
+    gridHelper.visible = !gridHelper.visible;
+});
+
+
+window.onload = function() {
+    if (model != null) {
+        characterControls.isOut = false;
+    }
+    if(window.location.href.includes("#1")){
+        console.error("je suis dans la page 1");
+        inThePage();
+    }
+}

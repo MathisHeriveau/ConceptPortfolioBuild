@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/index.css">
 </head>
 
 <body>
     <header>
         <div class="logo">
             <div class="img">
-                <img src="./img/logo.png" alt="logo">
+                <img src="/public/img/logo.png" alt="logo">
             </div>
         </div>
 
@@ -76,108 +77,15 @@
 
 
 </body>
-<script src="helperjs/three.min.js"></script>
-<script src="helperjs/orbitControls.js"></script>
-<script src="helperjs/gltfLoader.js"></script>
+<script src="/public/three.js/helperjs/three.min.js"></script>
+<script src="/public/three.js/helperjs/orbitControls.js"></script>
+<script src="/public/three.js/helperjs/gltfLoader.js"></script>
 
-<script src="characterControls.js"></script>
-<script src="main.js"></script>
+<script src="/public/three.js/characterControls.js"></script>
+<script src="/public/three.js/index.js"></script>
 
-
-<script>
-
-    setTimeout(() => {
-        document.getElementById('show-question').checked = true;
-        setTimeout(() => {
-            document.getElementById('show-answer').checked = true;
-            setTimeout(() => {
-                document.getElementById('speech').style.display = 'none';
-            }, 6000);
-        }, 6000);
-    }, 4000);
+<script src="/public/js/index.js"></script>
 
 
-   function goToPage(pageSuivante){
-        // On met animationSortie en z-index 1000
-        document.querySelector('.animationSortie').style.zIndex = 1000;
-
-        let bands = document.querySelectorAll('.band');
-        for (let i = 0; i < bands.length; i++) {
-            var color = ["DCBBB5","D5A099","DB726E"];
-            var style = ["primary","secondary","tertiary"]
-
-            var randomColor = color[Math.floor(Math.random() * color.length)];
-            var randomStyle = style[Math.floor(Math.random() * style.length)];
-            
-            bands[i].classList.remove("primaryOUT");
-            bands[i].classList.remove("secondaryOUT");
-            bands[i].classList.remove("tertiaryOUT");
-            
-            bands[i].classList.remove("primary");
-            bands[i].classList.remove("secondary");
-            bands[i].classList.remove("tertiary");
-            bands[i].classList.add(randomStyle);
-            bands[i].style.backgroundColor = "#" + randomColor;
-
-            document.cookie = "band" + i + "=" + randomColor + "; path=/";
-
-        }
-
-        // On attend 3 second avant de changer de page
-        setTimeout(() => {
-            if(!pageSuivante){
-                window.location.href = "index.html#1";
-            }
-            else{
-                window.location.href = "portfolio.html#1";
-            }
-        }, 2500);
-    
-   }
-
-    // Si une touche est appyée on display none la question
-    document.addEventListener('keydown', function (event) {
-        document.getElementById('speech').style.display = 'none';
-    });
-
-   
-
-
-    function inThePage(){
-        document.querySelector('.animationSortie').style.zIndex = 1000;
-
-        let bands = document.querySelectorAll('.band');
-        for (let i = 0; i < bands.length; i++) {
-
-            var color = ["DCBBB5","D5A099","DB726E"];
-            var style = ["primaryOUT","secondaryOUT","tertiaryOUT"]
-
-            var randomStyle = style[Math.floor(Math.random() * style.length)];
-            // on get le cookie de la band
-            var cookie = document.cookie.split(';');
-            var cookieValue = "";
-            for (let j = 0; j < cookie.length; j++) {
-                if(cookie[j].includes("band" + i)){
-                    cookieValue = cookie[j].split('=')[1];
-                }
-            }
-            bands[i].style.backgroundColor = "#" + cookieValue;
-            bands[i].classList.remove("primaryOUT");
-            bands[i].classList.remove("secondaryOUT");
-            bands[i].classList.remove("tertiaryOUT");
-            
-            bands[i].classList.remove("primary");
-            bands[i].classList.remove("secondary");
-            bands[i].classList.remove("tertiary");
-            bands[i].classList.add(randomStyle);
-
-        }
-
-        setTimeout(() => {
-            document.querySelector('.animationSortie').style.zIndex = -10;
-        }, 2500);
-
-    }
-</script>
 
 </html>

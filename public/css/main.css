@@ -114,69 +114,158 @@ nav ul li a {
 
 }
 
-
-main{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-}
-
-.main__left{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 15%;
-}
-
-.main__left h5{
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    color : #DB726E;
-}
-
-.main__left h3{
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    letter-spacing: 15px;
-}
-
-.main__left p {
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    width: 80%;
-}
-
-.lumiere{
+#grid{
     position: absolute;
-    top: 25%;
-    left: 45%;
-    background: rgba(255, 255, 255, 1);
-    z-index: -1;
+    bottom: 5%;
+    right: 5%;
+    cursor: pointer;
+    z-index: 100;
+}
 
-    border-radius: 50%;
+.animationSortie{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    z-index: -5;
+}
 
-    width: 100px;
-    height: 70px;
-
-    /* drop shadow EBCCC7 10px 10px 10px; */
-    box-shadow: 10px 10px 10px rgba(235, 204, 199, 1);
-    /* Blur 10px */
-    filter: blur(20px);
-    /* Inner shadow 10px 10px 10px 10px #EBCCC7 */
-    box-shadow: inset 10px 10px 10px 10px rgba(235, 204, 199, 0.7);
-    /* Layer blur 10px */
-
+.band{
+    width: 100%;
+    height: 100%;
+    transform: translateX(0);
+    z-index: 10000;
+    background-color: #DCBBB5;
+    transition: transform 1s;
 }
 
 
+/* primary","secondary","tertiary */
+.primary{
+    animation: sortie1 3s forwards; 
+    transform: translateX(100%);
+}
 
+.secondary{
+    animation: sortie2 3s forwards;
+    transform: translateX(100%);
+}
 
+.tertiary{
+    animation: sortie3 3s forwards;
+    transform: translateX(100%);
+}
+
+@keyframes sortie1 {
+    0% {
+        transform: translateX(100%);
+        origin: 0 0;
+    }
+    70% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes sortie2 {
+    0% {
+        transform: translateX(100%);
+        origin: 0 0;
+    }
+    10% {
+        transform: translateX(100%);
+    }
+    80% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes sortie3 {
+    0% {
+        transform: translateX(100%);
+        origin: 0 0;
+    }
+    20% {
+        transform: translateX(100%);
+    }
+    90% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* "primaryOUT","secondaryOUT","tertiaryOUT" */
+.primaryOUT{
+    animation: sortie1OUT 3s forwards;
+    transform: translateX(0);
+}
+
+.secondaryOUT{
+    animation: sortie2OUT 3s forwards;
+    transform: translateX(0);
+}
+
+.tertiaryOUT{
+    animation: sortie3OUT 3s forwards;
+    transform: translateX(0);
+}
+
+@keyframes sortie1OUT {
+    0% {
+        transform: translateX(0);
+        origin: 0 0;
+    }
+    70% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes sortie2OUT {
+    0% {
+        transform: translateX(0);
+        origin: 0 0;
+    }
+    10% {
+        transform: translateX(0);
+    }
+    80% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes sortie3OUT {
+    0% {
+        transform: translateX(0);
+        origin: 0 0;
+    }
+    20% {
+        transform: translateX(0);
+    }
+    90% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
 
 
 
@@ -347,160 +436,5 @@ input[id=show-answer]:checked ~ .speech #answer::after {
     inset: 50% 0 0 100%  !important;
     transition: inset calc(var(--_speed) * 1.5) linear;
     transition-delay: calc(var(--_speed) * 2);
-}
-
-
-
-
-#grid{
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    cursor: pointer;
-    z-index: 100;
-}
-
-.animationSortie{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    z-index: -5;
-}
-
-.band{
-    width: 100%;
-    height: 100%;
-    transform: translateX(0);
-    z-index: 10000;
-    background-color: #DCBBB5;
-}
-
-
-/* primary","secondary","tertiary */
-.primary{
-    animation: sortie1 3s forwards; 
-    transform: translateX(100%);
-}
-
-.secondary{
-    animation: sortie2 3s forwards;
-    transform: translateX(100%);
-}
-
-.tertiary{
-    animation: sortie3 3s forwards;
-    transform: translateX(100%);
-}
-
-@keyframes sortie1 {
-    0% {
-        transform: translateX(100%);
-        origin: 0 0;
-    }
-    70% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-@keyframes sortie2 {
-    0% {
-        transform: translateX(100%);
-        origin: 0 0;
-    }
-    10% {
-        transform: translateX(100%);
-    }
-    80% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-@keyframes sortie3 {
-    0% {
-        transform: translateX(100%);
-        origin: 0 0;
-    }
-    20% {
-        transform: translateX(100%);
-    }
-    90% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-/* "primaryOUT","secondaryOUT","tertiaryOUT" */
-.primaryOUT{
-    animation: sortie1OUT 3s forwards;
-    transform: translateX(0);
-}
-
-.secondaryOUT{
-    animation: sortie2OUT 3s forwards;
-    transform: translateX(0);
-}
-
-.tertiaryOUT{
-    animation: sortie3OUT 3s forwards;
-    transform: translateX(0);
-}
-
-@keyframes sortie1OUT {
-    0% {
-        transform: translateX(0);
-        origin: 0 0;
-    }
-    70% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-@keyframes sortie2OUT {
-    0% {
-        transform: translateX(0);
-        origin: 0 0;
-    }
-    10% {
-        transform: translateX(0);
-    }
-    80% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-@keyframes sortie3OUT {
-    0% {
-        transform: translateX(0);
-        origin: 0 0;
-    }
-    20% {
-        transform: translateX(0);
-    }
-    90% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
 }
 

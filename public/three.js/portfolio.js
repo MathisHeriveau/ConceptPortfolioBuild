@@ -23,7 +23,7 @@ function init() {
     });
 
     camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.set(0, 5, 15);
+    camera.position.set(-15, 5, 15);
 
     //set up controls
     // controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -66,7 +66,7 @@ function init() {
     scene.add(grid);
     // Ajout d'un helper pour voir la grille
     gridHelper = new THREE.GridHelper(100, 100);
-    gridHelper.visible = false;
+    gridHelper.visible = true;
     scene.add(gridHelper);
     
 
@@ -74,8 +74,12 @@ function init() {
         model = gltf.scene;
         if (container.clientWidth < 768) {
             model.position.set(0, 0, 0);
+            camera.lookAt(model.position);
         } else {
-            model.position.set(7, 0, 5);
+            model.position.set(-8, 0, 5);
+            camera.lookAt(model.position);
+            model.position.set(-12, 0, 5);
+
         }
         model.scale.set(2, 2, 2);
         // rotate de 90°
@@ -92,6 +96,7 @@ function init() {
 
         scene.add(hitBox);
         scene.add(model);
+
 
         model.traverse((child) => {
             if (child.isMesh) {
@@ -134,6 +139,12 @@ function animate() {
     }
     hitBox.position.set(model.position.x, model.position.y + model.scale.y/2, model.position.z);
     characterControls.update(0.01);
+
+    /*
+        camera.position.set(-15, 5, 15);
+        model.position.set(-12, 0, 5);
+    */
+        camera.position.set(model.position.x - 3, 5, model.position.z + 10);
 
     requestAnimationFrame(animate);
 }

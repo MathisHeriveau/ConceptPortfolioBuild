@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/portfolio.css">
 </head>
 
 <body>
     <header>
         <div class="logo">
             <div class="img">
-                <img src="./img/logo.png" alt="logo">
+                <img src="/public/img/logo.png" alt="logo">
             </div>
         </div>
 
@@ -33,7 +34,7 @@
 
 
     <main>
-        
+       
         <div class="speech-bubble">
             <div class="developer">
                 <input type="radio" id="show-question" name="joke">
@@ -66,99 +67,15 @@
 
 
 </body>
-<script src="helperjs/three.min.js"></script>
-<script src="helperjs/orbitControls.js"></script>
-<script src="helperjs/gltfLoader.js"></script>
+<script src="/public/three.js/helperjs/three.min.js"></script>
+<script src="/public/three.js/helperjs/orbitControls.js"></script>
+<script src="/public/three.js/helperjs/gltfLoader.js"></script>
 
-<script src="characterControls.js"></script>
-<script src="main.js"></script>
+<script src="/public/three.js/characterControls.js"></script>
+<script src="/public/three.js/portfolio.js"></script>
 
-
-<script>
-
-    setTimeout(() => {
-        document.getElementById('show-question').checked = true;
-        setTimeout(() => {
-            document.getElementById('show-answer').checked = true;
-            setTimeout(() => {
-                document.getElementById('speech').style.display = 'none';
-            }, 6000);
-        }, 6000);
-    }, 4000);
+<script src="/public/js/portfolio.js"></script>
 
 
-  
-
-    // Si une touche est appyée on display none la question
-    document.addEventListener('keydown', function (event) {
-        document.getElementById('speech').style.display = 'none';
-    });
-
-
-    function setBandStyle(band, style, color) {
-        band.style.backgroundColor = "#" + color;
-        band.classList.remove("primary", "secondary", "tertiary", "primaryOUT", "secondaryOUT", "tertiaryOUT");
-        band.classList.add(style);
-    }
-    
-    function setBandCookie(index, color) {
-        document.cookie = "band" + index + "=" + color + "; path=/";
-    }
-    
-    function getBandCookieValue(index) {
-        var cookie = document.cookie.split(';');
-        var cookieValue = "";
-        for (let j = 0; j < cookie.length; j++) {
-            if(cookie[j].includes("band" + index)){
-                cookieValue = cookie[j].split('=')[1];
-            }
-        }
-        return cookieValue;
-    }
-    
-    function goToPage(pageSuivante) {
-        document.querySelector('.animationSortie').style.zIndex = 1000;
-    
-        let bands = document.querySelectorAll('.band');
-        for (let i = 0; i < bands.length; i++) {
-            var color = ["DCBBB5", "D5A099", "DB726E"];
-            var style = ["primary", "secondary", "tertiary"];
-    
-            var randomColor = color[Math.floor(Math.random() * color.length)];
-            var randomStyle = style[Math.floor(Math.random() * style.length)];
-    
-            setBandStyle(bands[i], randomStyle, randomColor);
-            setBandCookie(i, randomColor);
-        }
-    
-        setTimeout(() => {
-            window.location.href = (pageSuivante) ? "portfolio.html#1" : "index.html#1";
-        }, 2500);
-    }
-    
-    function inThePage() {
-        document.querySelector('.animationSortie').style.zIndex = 1000;
-    
-        let bands = document.querySelectorAll('.band');
-        for (let i = 0; i < bands.length; i++) {
-            var style = ["primaryOUT", "secondaryOUT", "tertiaryOUT"];
-            var randomStyle = style[Math.floor(Math.random() * style.length)];
-            var cookieValue = getBandCookieValue(i);
-            
-            bands[i].style.backgroundColor = "#" + cookieValue;
-            setBandStyle(bands[i], randomStyle, "");
-        }
-    
-        setTimeout(() => {
-            document.querySelector('.animationSortie').style.zIndex = -10;
-        }, 2500);
-    }
-    
-
-   
-
-
-    
-</script>
 
 </html>

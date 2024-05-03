@@ -23,7 +23,6 @@ class CharacterControls {
         setInterval(() => {
             this.timer += 1;
             if (this.timer >= this.timerMax) {
-                console.log("Random animation : " + this.timer);
                 this.timer = 0;
                 this.timerMax = Math.floor(Math.random() * (10 - 5 + 1)) + 7;
                 this.doRandomAnimation();
@@ -278,8 +277,6 @@ class CharacterControls {
             return false;
         }
 
-        console.log("Position z : " + posz);
-        // Calcul de f en utilisant des intervalles
         var f = this.calculateF(posz);
 
         // Vérifier si la position x est en dehors de la fenêtre en fonction de f

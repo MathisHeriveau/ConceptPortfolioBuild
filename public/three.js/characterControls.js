@@ -5,7 +5,8 @@ class CharacterControls {
         this.mixer = mixer;
         this.camera = camera;
         this.moveDirection = new THREE.Vector3(); 
-        this.movementSpeed = 0.1; 
+        // this.movementSpeed = 0.1; 
+        this.movementSpeed = 1; 
         this.currentAngle = THREE.MathUtils.radToDeg(Math.atan2(this.camera.position.x - this.model.position.x, this.camera.position.z - this.model.position.z));
         this.setupEventListeners(); 
         this.touchePressed = {
@@ -15,7 +16,7 @@ class CharacterControls {
             right: false
         };
         this.delta = 0;
-        this.model.rotation.y = THREE.MathUtils.degToRad(this.currentAngle);
+        this.model.rotation.y = -THREE.MathUtils.degToRad(this.currentAngle);
         this.timer = 0;
         this.isOut = false;
         this.timerMax = Math.floor(Math.random() * (10 - 5 + 1)) + 4;

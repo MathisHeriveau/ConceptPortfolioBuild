@@ -7,19 +7,20 @@
     <title>Model</title>
     <link rel="stylesheet" href="/public/css/main.css">
     <link rel="stylesheet" href="/public/css/portfolio.css">
+
 </head>
 
 <body>
     <header>
         <div class="logo">
             <div class="img">
-                <img src="/public/img/logo.png" alt="logo">
+                <img src="/public/img/logo.png" alt="logo" onclick="window.location.href='/index.html'">
             </div>
         </div>
 
         <nav>
             <ul>
-                <li><a href="index.html">Portfolio</a></li>
+                <li><a href="/src/pages/portfolio.html">Portfolio</a></li>
                 <li><a href="index.html">A propos</a></li>
                 <li><a href="index.html">Blog</a></li>
                 <li><a href="index.html">Contact</a></li>
@@ -35,7 +36,7 @@
 
     <main>
        
-        <div class="speech-bubble">
+        <!-- <div class="speech-bubble">
             <div class="developer">
                 <input type="radio" id="show-question" name="joke">
                 <input type="radio" id="show-answer" name="joke">
@@ -44,9 +45,14 @@
                     <p id="answer">Sors de l'écran pour découvrir mon univers.</p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <img id="grid" width="64" height="64" src="https://img.icons8.com/arcade/64/grid.png" alt="grid"/>
 
+        <div class="performance" onclick="modePerformance()">
+            <p>
+                Mode performance <span id="performance" class="off">OFF</span>
+            </p>
+        </div>
 
         <div class="lumiere"></div>
         <div class="animationSortie">

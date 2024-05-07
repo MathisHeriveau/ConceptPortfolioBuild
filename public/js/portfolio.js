@@ -1,12 +1,12 @@
-setTimeout(() => {
-    document.getElementById('show-question').checked = true;
-    setTimeout(() => {
-        document.getElementById('show-answer').checked = true;
-        setTimeout(() => {
-            document.getElementById('speech').style.display = 'none';
-        }, 6000);
-    }, 6000);
-}, 4000);
+// setTimeout(() => {
+//     document.getElementById('show-question').checked = true;
+//     setTimeout(() => {
+//         document.getElementById('show-answer').checked = true;
+//         setTimeout(() => {
+//             document.getElementById('speech').style.display = 'none';
+//         }, 6000);
+//     }, 6000);
+// }, 4000);
 
 
 function goToPage(pageSuivante){
@@ -48,9 +48,9 @@ function goToPage(pageSuivante){
 }
 
 // Si une touche est appyée on display none la question
-document.addEventListener('keydown', function (event) {
-    document.getElementById('speech').style.display = 'none';
-});
+// document.addEventListener('keydown', function (event) {
+//     document.getElementById('speech').style.display = 'none';
+// });
 
 
 
@@ -89,4 +89,21 @@ function inThePage(){
         document.querySelector('.animationSortie').style.zIndex = -10;
     }, 2500);
 
+}
+
+
+
+function modePerformance(){
+    // Si dans la div #performance > span il y a class="off" alors on l'enlève
+    var span = document.getElementById("performance");
+    if(span.classList.contains("off")){
+        // On recharge la page avec un #1
+        window.location.href = "/src/pages/portfolio.html#2";
+        window.location.reload();
+    }
+    else{
+        // On recharge la page sans le #0
+        window.location.href = "/src/pages/portfolio.html";
+
+    }
 }
